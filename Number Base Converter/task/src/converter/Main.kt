@@ -13,15 +13,24 @@ fun toBinary(number: Int) {
         bin += rem * i
         i *= 10
     }
-    println(bin)
+    println("Conversion result: $bin")
 }
 
 fun toOctal(number: Int) {
+    var dec = number;
+    var octal = 0;
+    var i = 1;
 
+    while (dec != 0) {
+        octal += dec % 8 * i
+        dec = dec / 8
+        i *= 10
+    }
+    println("Conversion result: $octal")
 }
 
 fun toHexa(number: Int) {
-
+    println("Conversion result: ${number.toString(16)}")
 }
 
 
