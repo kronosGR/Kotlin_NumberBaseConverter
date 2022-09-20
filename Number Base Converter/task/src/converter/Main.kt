@@ -1,5 +1,7 @@
 package converter
 
+import java.util.StringJoiner
+
 fun toBinary(number: Int) {
     var bin = 0
     var rem = 1
@@ -33,8 +35,20 @@ fun toHexa(number: Int) {
     println("Conversion result: ${number.toString(16)}")
 }
 
+fun menu() {
+    while (true) {
+        println("Do you want to convert /from decimal or /to decimal? (To quit type /exit)")
+        val choice = readln()
 
-fun main() {
+        when (choice) {
+            "/from" -> fromDecimal()
+            "/to" -> toDecimal()
+            "/exit" -> break
+        }
+    }
+}
+
+fun fromDecimal() {
     println("Enter number in decimal system:")
     val number = readln().toInt()
     println("Enter target base:")
@@ -45,4 +59,45 @@ fun main() {
         8 -> toOctal(number)
         16 -> toHexa(number)
     }
+    println()
+}
+
+fun binToDec(number: String) {
+    var num = number.toLong()
+    var decimalNumber = 0
+    var i = 0
+    var remainder: Long
+
+    while (num.toInt() != 0) {
+        remainder = num % 10
+        num /= 10
+        decimalNumber += (remainder * Math.pow(2.0, i.toDouble())).toInt()
+        ++i
+    }
+    println("Conversion to decimal result: ${decimalNumber}")
+}
+
+fun hexToDec(number: String) {
+    println("Conversion to decimal result: ${number.toInt(16)}")
+}
+
+fun octalToDec(number: String) {
+    println("Conversion to decimal result: ${number.toInt(8)}")
+}
+
+fun toDecimal() {
+    println("Enter source number: ")
+    val src = readln()
+    println("Enter source base: ")
+    val base = readln().toInt()
+    when (base) {
+        2 -> binToDec(src)
+        8 -> octalToDec(src)
+        16 -> hexToDec(src)
+    }
+}
+
+fun main() {
+    menu()
+
 }
