@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="NumeralSystemConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-20T13:24:44" hostname="fedora" time="0.097">
+  <properties/>
+  <testcase name="start" classname="NumeralSystemConverterTest" time="0.097"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+Enter number in decimal system:
+> 772
+Enter target base:
+> 16
+Conversion result: 304
+?[1;31m
+Start test 2?[0m
+Enter number in decimal system:
+> 148
+Enter target base:
+> 16
+Conversion result: 94
+?[1;31m
+Start test 3?[0m
+Enter number in decimal system:
+> 385
+Enter target base:
+> 16
+Conversion result: 181
+?[1;31m
+Start test 4?[0m
+Enter number in decimal system:
+> 815
+Enter target base:
+> 2
+Conversion result: 1100101111
+?[1;31m
+Start test 5?[0m
+Enter number in decimal system:
+> 169
+Enter target base:
+> 8
+Conversion result: 251
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
