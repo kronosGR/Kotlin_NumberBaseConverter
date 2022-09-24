@@ -37,14 +37,25 @@ fun toHexa(number: Int) {
 
 fun menu() {
     while (true) {
-        println("Do you want to convert /from decimal or /to decimal? (To quit type /exit)")
+        println("Enter two numbers in format: {source base} {target base} (To quit type /exit)")
         val choice = readln()
-
-        when (choice) {
-            "/from" -> fromDecimal()
-            "/to" -> toDecimal()
-            "/exit" -> break
+        if (choice.equals("/exit")){
+            break;
         }
+        val bases = choice.split(" ")
+        val srcBase = bases[0]
+        val tgtBase = bases[1]
+
+        while(true){
+            println("Enter number in base $srcBase to convert to base $tgtBase (To go back type /back)")
+            val ch = readln()
+            if (ch.equals("/back")){
+                break;
+            }
+
+
+        }
+
     }
 }
 
