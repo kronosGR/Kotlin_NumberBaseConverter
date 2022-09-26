@@ -14,13 +14,13 @@ public class NumeralSystemConverterTest extends StageTest<String> {
     public List<TestCase<String>> generate() {
 
         return Arrays.asList(
-            new TestCase<String>().setDynamicTesting(this::test1),
-            new TestCase<String>().setDynamicTesting(this::test2),
-            new TestCase<String>().setDynamicTesting(this::test3),
-            new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test4),
-            new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test5),
-            new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test6),
-            new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test7)
+                new TestCase<String>().setDynamicTesting(this::test1),
+                new TestCase<String>().setDynamicTesting(this::test2),
+                new TestCase<String>().setDynamicTesting(this::test3),
+                new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test4),
+                new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test5),
+                new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test6),
+                new TestCase<String>().setTimeLimit(60000).setDynamicTesting(this::test7)
         );
     }
 
@@ -32,13 +32,13 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
         if (!output.contains("source base") || !output.contains("target base") || !output.contains("/exit")) {
             return CheckResult.wrong("Your program should output the message \"Enter two numbers in format:" +
-                " {source base} {target base} (To quit type /exit)\" when it starts");
+                    " {source base} {target base} (To quit type /exit)\" when it starts");
         }
 
         main.execute("/exit");
         if (!main.isFinished()) {
             return CheckResult.wrong("Your program should terminate when the user enters " +
-                "\"/exit\"");
+                    "\"/exit\"");
         }
 
         return CheckResult.correct();
@@ -58,17 +58,17 @@ public class NumeralSystemConverterTest extends StageTest<String> {
         output = main.execute("10 2").toLowerCase();
         if (!output.contains("base 10") || !output.contains("convert to base 2")) {
             return CheckResult.wrong("Your program should prompt the user for the number to be " +
-                "converted with the message \"Enter number in base " +
-                "{user source base} to convert to base {user target base}" +
-                " (To go back type /back)\" after accepting the " +
-                "source and target base");
+                    "converted with the message \"Enter number in base " +
+                    "{user source base} to convert to base {user target base}" +
+                    " (To go back type /back)\" after accepting the " +
+                    "source and target base");
         }
 
         if (!output.contains("/back")) {
             return CheckResult.wrong("Your program should provide the user with an option to go " +
-                "back to the top-level menu with the message \"Enter number in base " +
-                "{user source base} to convert to base {user target base} " +
-                "(To go back type /back)\"");
+                    "back to the top-level menu with the message \"Enter number in base " +
+                    "{user source base} to convert to base {user target base} " +
+                    "(To go back type /back)\"");
         }
 
         randomDecimal = Generator.getRandomSourceNumber(10);
@@ -80,13 +80,13 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
         if (!lines[0].contains("result:")) {
             return CheckResult.wrong("Your program should print the conversion result in the " +
-                "format \"Conversion result: CONVERTED_NUMBER\"");
+                    "format \"Conversion result: CONVERTED_NUMBER\"");
         }
 
         if (!lines[0].contains(":")) {
             return CheckResult.wrong("After entering the target base the next line doesn't contain a conversion result!\n" +
-                "It should contain ':' symbol!\n" +
-                "Your line\n:" + lines[0]);
+                    "It should contain ':' symbol!\n" +
+                    "Your line\n:" + lines[0]);
         }
 
         userResult = lines[0].substring(output.indexOf(":") + 1).trim();
@@ -96,22 +96,22 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
         if (main.isFinished()) {
             return CheckResult.wrong("Your program should not terminate until the user enter " +
-                "\"/exit\" in the top-level menu");
+                    "\"/exit\" in the top-level menu");
         }
 
         if (lastLine.contains("/exit")) {
             return CheckResult.wrong("Your program should remember the user's source and target " +
-                "base and should not return to the top-level menu " +
-                "until the user enters \"/back\"");
+                    "base and should not return to the top-level menu " +
+                    "until the user enters \"/back\"");
         }
 
         if (!lastLine.contains("base 10") || !lastLine.contains("convert to base 2")) {
             return CheckResult.wrong("After each conversion, your program should prompt the user" +
-                " for a number to be " +
-                "converted with the message \"Enter number in base " +
-                "{user source base} to convert to base {user target base}" +
-                " (To go back type /back)\" until the user enters " +
-                "\"/back\"");
+                    " for a number to be " +
+                    "converted with the message \"Enter number in base " +
+                    "{user source base} to convert to base {user target base}" +
+                    " (To go back type /back)\" until the user enters " +
+                    "\"/back\"");
         }
 
 
@@ -133,7 +133,7 @@ public class NumeralSystemConverterTest extends StageTest<String> {
         output = main.execute("/back").toLowerCase();
         if (!output.contains("/exit")) {
             return CheckResult.wrong("Your program should take the user back to the top-level " +
-                "menu when they enter \"/back\"");
+                    "menu when they enter \"/back\"");
         }
 
         main.execute("10 8");
@@ -143,18 +143,18 @@ public class NumeralSystemConverterTest extends StageTest<String> {
         lastLine = lines[lines.length - 1];
         if (!lastLine.contains("base 10") || !lastLine.contains("convert to base 8")) {
             return CheckResult.wrong("After each conversion, your program should prompt the user" +
-                " for a number to be " +
-                "converted with the message \"Enter number in base " +
-                "{user source base} to convert to base {user target base}" +
-                " (To go back type /back)\" until the user enters " +
-                "\"/back\"");
+                    " for a number to be " +
+                    "converted with the message \"Enter number in base " +
+                    "{user source base} to convert to base {user target base}" +
+                    " (To go back type /back)\" until the user enters " +
+                    "\"/back\"");
         }
 
         main.execute("/back");
         main.execute("/exit");
         if (!main.isFinished()) {
             return CheckResult.wrong("Your program should terminate when the user enters " +
-                "\"/exit\"");
+                    "\"/exit\"");
         }
 
         return CheckResult.correct();
@@ -183,22 +183,22 @@ public class NumeralSystemConverterTest extends StageTest<String> {
                 output = main.execute(sourceBase + " " + targetBase).toLowerCase();
                 if (!output.contains("base " + sourceBase) || !output.contains("convert to base " + targetBase)) {
                     return CheckResult.wrong("Your program should prompt the user for the number to be " +
-                        "converted with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base}" +
-                        " (To go back type /back)\" after accepting the " +
-                        "source and target base");
+                            "converted with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base}" +
+                            " (To go back type /back)\" after accepting the " +
+                            "source and target base");
                 }
 
                 if (!output.contains("/back")) {
                     return CheckResult.wrong("Your program should provide the user with an option to go " +
-                        "back to the top-level menu with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base} " +
-                        "(To go back type /back)\"");
+                            "back to the top-level menu with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base} " +
+                            "(To go back type /back)\"");
                 }
 
                 randomSourceNumber = Generator.getRandomSourceNumber(sourceBase);
                 actualResult = Converter
-                    .convertSourceToTargetBase(randomSourceNumber, sourceBase, targetBase);
+                        .convertSourceToTargetBase(randomSourceNumber, sourceBase, targetBase);
 
                 output = main.execute(randomSourceNumber).toLowerCase();
 
@@ -207,8 +207,8 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (!lines[0].contains(":")) {
                     return CheckResult.wrong("After entering the target base the next line doesn't contain a conversion result!\n" +
-                        "It should contain ':' symbol!\n" +
-                        "Your line\n:" + lines[0]);
+                            "It should contain ':' symbol!\n" +
+                            "Your line\n:" + lines[0]);
                 }
 
                 userResult = lines[0].substring(output.indexOf(":") + 1).trim();
@@ -218,13 +218,13 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (main.isFinished()) {
                     return CheckResult.wrong("Your program should not terminate until the user enter " +
-                        "\"/exit\" in the top-level menu");
+                            "\"/exit\" in the top-level menu");
                 }
 
                 if (lastLine.contains("/exit")) {
                     return CheckResult.wrong("Your program should remember the user's source and target " +
-                        "base and should not return to the top-level menu " +
-                        "until the user enters \"/back\"");
+                            "base and should not return to the top-level menu " +
+                            "until the user enters \"/back\"");
                 }
 
                 main.execute("/back");
@@ -235,7 +235,7 @@ public class NumeralSystemConverterTest extends StageTest<String> {
         main.execute("/exit");
         if (!main.isFinished()) {
             return CheckResult.wrong("Your program should terminate when the user enters " +
-                "\"/exit\"");
+                    "\"/exit\"");
         }
 
         return CheckResult.correct();
@@ -263,22 +263,22 @@ public class NumeralSystemConverterTest extends StageTest<String> {
                 output = main.execute(sourceBase + " " + targetBase).toLowerCase();
                 if (!output.contains("base " + sourceBase) || !output.contains("convert to base " + targetBase)) {
                     return CheckResult.wrong("Your program should prompt the user for the number to be " +
-                        "converted with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base}" +
-                        " (To go back type /back)\" after accepting the " +
-                        "source and target base");
+                            "converted with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base}" +
+                            " (To go back type /back)\" after accepting the " +
+                            "source and target base");
                 }
 
                 if (!output.contains("/back")) {
                     return CheckResult.wrong("Your program should provide the user with an option to go " +
-                        "back to the top-level menu with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base} " +
-                        "(To go back type /back)\"");
+                            "back to the top-level menu with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base} " +
+                            "(To go back type /back)\"");
                 }
 
                 randomSourceNumber = Generator.getRandomSourceNumber(sourceBase);
                 actualResult = Converter
-                    .convertSourceToTargetBase(randomSourceNumber, sourceBase, targetBase);
+                        .convertSourceToTargetBase(randomSourceNumber, sourceBase, targetBase);
 
                 output = main.execute(randomSourceNumber).toLowerCase();
 
@@ -287,8 +287,8 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (!lines[0].contains(":")) {
                     return CheckResult.wrong("After entering the target base the next line doesn't contain a conversion result!\n" +
-                        "It should contain ':' symbol!\n" +
-                        "Your line\n:" + lines[0]);
+                            "It should contain ':' symbol!\n" +
+                            "Your line\n:" + lines[0]);
                 }
 
                 userResult = lines[0].substring(output.indexOf(":") + 1).trim();
@@ -298,13 +298,13 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (main.isFinished()) {
                     return CheckResult.wrong("Your program should not terminate until the user enter " +
-                        "\"/exit\" in the top-level menu");
+                            "\"/exit\" in the top-level menu");
                 }
 
                 if (lastLine.contains("/exit")) {
                     return CheckResult.wrong("Your program should remember the user's source and target " +
-                        "base and should not return to the top-level menu " +
-                        "until the user enters \"/back\"");
+                            "base and should not return to the top-level menu " +
+                            "until the user enters \"/back\"");
                 }
 
                 main.execute("/back");
@@ -315,7 +315,7 @@ public class NumeralSystemConverterTest extends StageTest<String> {
         main.execute("/exit");
         if (!main.isFinished()) {
             return CheckResult.wrong("Your program should terminate when the user enters " +
-                "\"/exit\"");
+                    "\"/exit\"");
         }
 
         return CheckResult.correct();
@@ -335,7 +335,7 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
         for (int sourceBase = 2; sourceBase <= 18; sourceBase += 3) {
 
-            for (int targetBase = 2; targetBase <= 36; targetBase +=3) {
+            for (int targetBase = 2; targetBase <= 36; targetBase += 3) {
 
                 if (sourceBase == targetBase) {
                     continue;
@@ -344,22 +344,22 @@ public class NumeralSystemConverterTest extends StageTest<String> {
                 output = main.execute(sourceBase + " " + targetBase).toLowerCase();
                 if (!output.contains("base " + sourceBase) || !output.contains("convert to base " + targetBase)) {
                     return CheckResult.wrong("Your program should prompt the user for the number to be " +
-                        "converted with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base}" +
-                        " (To go back type /back)\" after accepting the " +
-                        "source and target base");
+                            "converted with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base}" +
+                            " (To go back type /back)\" after accepting the " +
+                            "source and target base");
                 }
 
                 if (!output.contains("/back")) {
                     return CheckResult.wrong("Your program should provide the user with an option to go " +
-                        "back to the top-level menu with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base} " +
-                        "(To go back type /back)\"");
+                            "back to the top-level menu with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base} " +
+                            "(To go back type /back)\"");
                 }
 
                 randomBigInteger = Generator.getRandomBigInteger(sourceBase);
                 actualResult = Converter
-                    .convertSourceToTargetBase(randomBigInteger, sourceBase, targetBase);
+                        .convertSourceToTargetBase(randomBigInteger, sourceBase, targetBase);
 
                 output = main.execute(randomBigInteger).toLowerCase();
 
@@ -368,8 +368,8 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (!lines[0].contains(":")) {
                     return CheckResult.wrong("After entering the target base the next line doesn't contain a conversion result!\n" +
-                        "It should contain ':' symbol!\n" +
-                        "Your line\n:" + lines[0]);
+                            "It should contain ':' symbol!\n" +
+                            "Your line\n:" + lines[0]);
                 }
 
                 userResult = lines[0].substring(output.indexOf(":") + 1).trim();
@@ -379,13 +379,13 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (main.isFinished()) {
                     return CheckResult.wrong("Your program should not terminate until the user enter " +
-                        "\"/exit\" in the top-level menu");
+                            "\"/exit\" in the top-level menu");
                 }
 
                 if (lastLine.contains("/exit")) {
                     return CheckResult.wrong("Your program should remember the user's source and target " +
-                        "base and should not return to the top-level menu " +
-                        "until the user enters \"/back\"");
+                            "base and should not return to the top-level menu " +
+                            "until the user enters \"/back\"");
                 }
 
                 main.execute("/back");
@@ -396,7 +396,7 @@ public class NumeralSystemConverterTest extends StageTest<String> {
         main.execute("/exit");
         if (!main.isFinished()) {
             return CheckResult.wrong("Your program should terminate when the user enters " +
-                "\"/exit\"");
+                    "\"/exit\"");
         }
 
         return CheckResult.correct();
@@ -424,22 +424,22 @@ public class NumeralSystemConverterTest extends StageTest<String> {
                 output = main.execute(sourceBase + " " + targetBase).toLowerCase();
                 if (!output.contains("base " + sourceBase) || !output.contains("convert to base " + targetBase)) {
                     return CheckResult.wrong("Your program should prompt the user for the number to be " +
-                        "converted with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base}" +
-                        " (To go back type /back)\" after accepting the " +
-                        "source and target base");
+                            "converted with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base}" +
+                            " (To go back type /back)\" after accepting the " +
+                            "source and target base");
                 }
 
                 if (!output.contains("/back")) {
                     return CheckResult.wrong("Your program should provide the user with an option to go " +
-                        "back to the top-level menu with the message \"Enter number in base " +
-                        "{user source base} to convert to base {user target base} " +
-                        "(To go back type /back)\"");
+                            "back to the top-level menu with the message \"Enter number in base " +
+                            "{user source base} to convert to base {user target base} " +
+                            "(To go back type /back)\"");
                 }
 
                 randomBigInteger = Generator.getRandomBigInteger(sourceBase);
                 actualResult = Converter
-                    .convertSourceToTargetBase(randomBigInteger, sourceBase, targetBase);
+                        .convertSourceToTargetBase(randomBigInteger, sourceBase, targetBase);
 
                 output = main.execute(randomBigInteger).toLowerCase();
 
@@ -448,8 +448,8 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (!lines[0].contains(":")) {
                     return CheckResult.wrong("After entering the target base the next line doesn't contain a conversion result!\n" +
-                        "It should contain ':' symbol!\n" +
-                        "Your line\n:" + lines[0]);
+                            "It should contain ':' symbol!\n" +
+                            "Your line\n:" + lines[0]);
                 }
 
                 userResult = lines[0].substring(output.indexOf(":") + 1).trim();
@@ -459,13 +459,13 @@ public class NumeralSystemConverterTest extends StageTest<String> {
 
                 if (main.isFinished()) {
                     return CheckResult.wrong("Your program should not terminate until the user enter " +
-                        "\"/exit\" in the top-level menu");
+                            "\"/exit\" in the top-level menu");
                 }
 
                 if (lastLine.contains("/exit")) {
                     return CheckResult.wrong("Your program should remember the user's source and target " +
-                        "base and should not return to the top-level menu " +
-                        "until the user enters \"/back\"");
+                            "base and should not return to the top-level menu " +
+                            "until the user enters \"/back\"");
                 }
 
                 main.execute("/back");
@@ -476,7 +476,7 @@ public class NumeralSystemConverterTest extends StageTest<String> {
         main.execute("/exit");
         if (!main.isFinished()) {
             return CheckResult.wrong("Your program should terminate when the user enters " +
-                "\"/exit\"");
+                    "\"/exit\"");
         }
 
         return CheckResult.correct();

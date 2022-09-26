@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.184s</div>
+<div class="counter">0.131s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,13 +61,83 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard output</a>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="start"></a>
+<h3 class="failures">start</h3>
+<span class="code">
+<pre>java.lang.AssertionError: Wrong answer in test #4
+
+The conversion result of your program is wrong
+
+Please find below the output of your program during this failed test.
+Note that the '&gt;' character indicates the beginning of the input line.
+
+---
+
+Enter two numbers in format: {source base} {target base} (To quit type /exit)
+&gt; 2 5
+Enter number in base 2 to convert to base 5 (To go back type /back)
+&gt; 111010010
+Conversion result: 111010010
+Enter number in base 2 to convert to base 5 (To go back type /back)
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -78,208 +148,53 @@
 </tr>
 </thead>
 <tr>
-<td class="success">start</td>
-<td class="success">0.184s</td>
-<td class="success">passed</td>
+<td class="failures">start</td>
+<td class="failures">0.131s</td>
+<td class="failures">failed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>?[1;31m
 Start test 1?[0m
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
+Enter two numbers in format: {source base} {target base} (To quit type /exit)
 &gt; /exit
 ?[1;31m
 Start test 2?[0m
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 209
-Enter target base:
-&gt; 2
-Conversion result: 11010001
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /exit
+Enter two numbers in format: {source base} {target base} (To quit type /exit)
+&gt; 10 2
+Enter number in base 10 to convert to base 2 (To go back type /back)
+&gt; 571
+Conversion result: 1000111011
+Enter number in base 10 to convert to base 2 (To go back type /back)
 ?[1;31m
 Start test 3?[0m
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 287
-Enter target base:
-&gt; 16
-Conversion result: 11f
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 28
-Enter target base:
-&gt; 16
-Conversion result: 1c
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 429
-Enter target base:
-&gt; 16
-Conversion result: 1ad
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 213
-Enter target base:
-&gt; 16
-Conversion result: d5
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 170
-Enter target base:
-&gt; 16
-Conversion result: aa
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
+Enter two numbers in format: {source base} {target base} (To quit type /exit)
+&gt; 10 2
+Enter number in base 10 to convert to base 2 (To go back type /back)
+&gt; 263
+Conversion result: 100000111
+Enter number in base 10 to convert to base 2 (To go back type /back)
+&gt; /back
+Enter two numbers in format: {source base} {target base} (To quit type /exit)
+&gt; 10 8
+Enter number in base 10 to convert to base 8 (To go back type /back)
+&gt; 810
+Conversion result: 1452
+Enter number in base 10 to convert to base 8 (To go back type /back)
+&gt; /back
+Enter two numbers in format: {source base} {target base} (To quit type /exit)
 &gt; /exit
 ?[1;31m
 Start test 4?[0m
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 773
-Enter target base:
-&gt; 8
-Conversion result: 1405
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 88
-Enter target base:
-&gt; 8
-Conversion result: 130
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 614
-Enter target base:
-&gt; 8
-Conversion result: 1146
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 490
-Enter target base:
-&gt; 8
-Conversion result: 752
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /from
-Enter number in decimal system:
-&gt; 782
-Enter target base:
-&gt; 8
-Conversion result: 1416
-
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /exit
-?[1;31m
-Start test 5?[0m
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 100010000
-Enter source base: 
-&gt; 2
-Conversion to decimal result: 272
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /exit
-?[1;31m
-Start test 6?[0m
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 1722
-Enter source base: 
-&gt; 8
-Conversion to decimal result: 978
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 10
-Enter source base: 
-&gt; 8
-Conversion to decimal result: 8
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 1200
-Enter source base: 
-&gt; 8
-Conversion to decimal result: 640
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 440
-Enter source base: 
-&gt; 8
-Conversion to decimal result: 288
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 1055
-Enter source base: 
-&gt; 8
-Conversion to decimal result: 557
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /exit
-?[1;31m
-Start test 7?[0m
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 21b
-Enter source base: 
-&gt; 16
-Conversion to decimal result: 539
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 27e
-Enter source base: 
-&gt; 16
-Conversion to decimal result: 638
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; b8
-Enter source base: 
-&gt; 16
-Conversion to decimal result: 184
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; 214
-Enter source base: 
-&gt; 16
-Conversion to decimal result: 532
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /to
-Enter source number: 
-&gt; b
-Enter source base: 
-&gt; 16
-Conversion to decimal result: 11
-Do you want to convert /from decimal or /to decimal? (To quit type /exit)
-&gt; /exit
+Enter two numbers in format: {source base} {target base} (To quit type /exit)
+&gt; 2 5
+Enter number in base 2 to convert to base 5 (To go back type /back)
+&gt; 111010010
+Conversion result: 111010010
+Enter number in base 2 to convert to base 5 (To go back type /back)
 </pre>
 </span>
 </div>
@@ -291,7 +206,7 @@ Do you want to convert /from decimal or /to decimal? (To quit type /exit)
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.3.3</a> at Sep 20, 2022, 4:02:02 PM</p>
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at Sep 26, 2022, 4:13:40 PM</p>
 </div>
 </div>
 </body>
