@@ -1,19 +1,23 @@
 package converter
 
-fun toBinary(number: Int): Int {
-    var bin = 0
-    var rem = 1
-    var step = 1
-    var i = 1
-    var num = number
+import java.math.BigDecimal
+import java.math.BigInteger
+import kotlin.math.pow
 
-    while (num != 0) {
-        rem = num % 2
-        num /= 2
+fun toBinary(number: String): String {
+    var bin = "0".toBigInteger()
+    var rem = "1".toBigInteger()
+    var step = 1
+    var i = "1".toBigInteger()
+    var num = number.toBigInteger()
+
+    while (num != "0".toBigInteger()) {
+        rem = num % "2".toBigInteger()
+        num /= "2".toBigInteger()
         bin += rem * i
-        i *= 10
+        i *= "10".toBigInteger()
     }
-    return bin
+    return bin.toString()
 }
 
 fun toOctal(number: Int): Int {
@@ -29,27 +33,28 @@ fun toOctal(number: Int): Int {
     return octal
 }
 
-fun toAnyBase(toAnyBase: Int, number: Int): String {
-    return number.toString(toAnyBase)
+fun toAnyBase(toAnyBase: Int, number: String): String {
+    return number.toBigDecimal().toBigInteger().toString(toAnyBase)
 }
 
-fun binToDec(number: Int): Int {
-    var num = number.toLong()
-    var decimalNumber = 0
-    var i = 0
-    var remainder: Long
+fun binToDec(number: String): String {
+    var num: BigInteger = number.toBigDecimal().toBigInteger()
+    var decimalNumber: BigDecimal = "0.0".toBigDecimal()
+    var i: Int = 0
+    var remainder: BigInteger
 
     while (num.toInt() != 0) {
-        remainder = num % 10
-        num /= 10
-        decimalNumber += (remainder * Math.pow(2.0, i.toDouble())).toInt()
+        remainder = num % 10.toBigInteger()
+        num /= 10.toBigInteger()
+        decimalNumber += BigDecimal(remainder * (2.toBigInteger()).pow(i))
         ++i
     }
-    return decimalNumber
+    return decimalNumber.toString()
 }
 
-fun fromAnyBaseToDec(fromBase: Int, number: String): Int {
-    return number.toInt(fromBase)
+
+fun fromAnyBaseToDec(fromBase: Int, number: String): String {
+    return number.toBigInteger(fromBase).toString()
 }
 
 fun octalToDec(number: Int): Int {
@@ -57,20 +62,21 @@ fun octalToDec(number: Int): Int {
 }
 
 fun convert(src: Int, trg: Int, num: String) {
-    val dec: Int = when {
-        src == 2 -> binToDec(num.toInt())
-        src == 8 -> octalToDec(num.toInt())
-        src in 9..36 -> fromAnyBaseToDec(src, num)
-        else -> 0
+
+    val dec: String = when {
+        src == 2 -> binToDec(num)
+        //src == 8 -> octalToDec(num.toInt())
+        src in 3..36 -> fromAnyBaseToDec(src, num)
+        else -> "0"
     }
     var res: String
     if (src == trg) {
         res = dec.toString()
     } else {
         res = when {
-            src == 2 -> toBinary(dec).toString()
-            src == 8 -> toOctal(dec).toString()
-            src in 9..36 -> toAnyBase(trg, dec)
+            trg == 2 -> toBinary(dec)
+            //src == 8 -> toOctal(dec).toString()
+            trg in 3..36 -> toAnyBase(trg, dec)
             else -> "0"
         }
     }
@@ -104,5 +110,4 @@ fun menu() {
 
 fun main() {
     menu()
-
 }

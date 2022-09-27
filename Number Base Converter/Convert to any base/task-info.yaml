@@ -537,23 +537,8 @@ files:
       }
     learner_created: false
 feedback_link: https://hyperskill.org/learn/step/12347#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #4
-
-    The conversion result of your program is wrong
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    Enter two numbers in format: {source base} {target base} (To quit type /exit)
-    &gt; 2 5
-    Enter number in base 2 to convert to base 5 (To go back type /back)
-    &gt; 111010010
-    Conversion result: 111010010
-    Enter number in base 2 to convert to base 5 (To go back type /back)
-  time: Mon, 26 Sep 2022 14:13:40 UTC
+  message: Congratulations!
+  time: Tue, 27 Sep 2022 14:09:24 UTC
 record: -1

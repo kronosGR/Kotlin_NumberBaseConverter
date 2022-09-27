@@ -1,17 +1,17 @@
 type: edu
 files:
-- name: src/converter/Main.kt
-  visible: true
-  text: |-
-    package converter
-
-    fun main() {
-        println("Hello, world!")
-    }
-  learner_created: false
-- name: test/NumeralSystemConverterTest.java
-  visible: false
-  text: "import org.hyperskill.hstest.exception.outcomes.WrongAnswer;\nimport org.hyperskill.hstest.stage.StageTest;\n\
+  - name: src/converter/Main.kt
+    visible: true
+    text: |-
+      package converter
+      
+      fun main() {
+          println("Hello, world!")
+      }
+    learner_created: false
+  - name: test/NumeralSystemConverterTest.java
+    visible: false
+    text: "import org.hyperskill.hstest.exception.outcomes.WrongAnswer;\nimport org.hyperskill.hstest.stage.StageTest;\n\
     import org.hyperskill.hstest.testcase.CheckResult;\nimport org.hyperskill.hstest.testcase.TestCase;\n\
     import org.hyperskill.hstest.testing.TestedProgram;\n\nimport java.math.BigDecimal;\n\
     import java.math.BigInteger;\nimport java.math.RoundingMode;\nimport java.util.Arrays;\n\
@@ -562,7 +562,7 @@ files:
     \ + 1 == resultIndex || digits\n                        .indexOf(firstDigit) -\
     \ 1 == resultIndex;\n            }\n            \n        } else {\n         \
     \   return true;\n        }\n        \n    }\n}\n"
-  learner_created: false
+    learner_created: false
 feedback_link: https://hyperskill.org/learn/step/12348#comment
 status: Unchecked
 record: -1
