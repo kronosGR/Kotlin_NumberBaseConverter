@@ -61,26 +61,70 @@ fun octalToDec(number: Int): Int {
     return number.toString().toInt(8)
 }
 
-fun convert(src: Int, trg: Int, num: String) {
+fun fractionalToDecimal(factional: String, base: Int): BigDecimal {
+    return factional.toLowerCase().mapIndexed { i, c ->
+        val number = Integer.valueOf(c.toString(), base)
+        if (number == 0) {
+            number.toBigDecimal()
+        } else {
+            (number * base.toDouble().pow(-(i + 1))).toBigDecimal()
+        }
+    }.reduceRight(BigDecimal::add)
+}
 
-    val dec: String = when {
-        src == 2 -> binToDec(num)
-        //src == 8 -> octalToDec(num.toInt())
-        src in 3..36 -> fromAnyBaseToDec(src, num)
-        else -> "0"
+fun fractionalFromDecimal(fractional: BigDecimal, base: Int): String {
+    val result = mutableListOf<String>()
+    var remaining = fractional
+    var precision = 1
+    while (precision <= 5 && remaining.compareTo(BigDecimal.ZERO) != 0) {
+        remaining = remaining.multiply(base.toBigDecimal())
+        val integerPart = remaining.toInt()
+        if (integerPart > 0) {
+            result.add(integerPart.toString(base))
+            remaining = remaining.subtract(integerPart.toBigDecimal())
+        } else {
+            result.add("0")
+        }
+        precision++
     }
-    var res: String
-    if (src == trg) {
-        res = dec.toString()
-    } else {
-        res = when {
-            trg == 2 -> toBinary(dec)
-            //src == 8 -> toOctal(dec).toString()
-            trg in 3..36 -> toAnyBase(trg, dec)
+    return result.joinToString("") { it.toString() }
+}
+
+fun convert(src: Int, trg: Int, num: String) {
+    var dec: String
+    var res: String = ""
+    if (num.contains('.')) {
+        val (integer, fract) = num.split('.')
+        val integ = when {
+            src == 2 -> binToDec(num)
+            //src == 8 -> octalToDec(num.toInt())
+            src in 3..36 -> fromAnyBaseToDec(src, integer)
             else -> "0"
         }
-    }
 
+
+        val decF = fractionalFromDecimal(fract.toBigDecimal(), src)
+        val newF = fractionalToDecimal(decF, trg)
+        res = "$integ.$newF"
+    } else {
+        dec = when {
+            src == 2 -> binToDec(num)
+            //src == 8 -> octalToDec(num.toInt())
+            src in 3..36 -> fromAnyBaseToDec(src, num)
+            else -> "0"
+        }
+
+        if (src == trg) {
+            res = dec.toString()
+        } else {
+            res = when {
+                trg == 2 -> toBinary(dec)
+                //src == 8 -> toOctal(dec).toString()
+                trg in 3..36 -> toAnyBase(trg, dec)
+                else -> "0"
+            }
+        }
+    }
     println("Conversion result: $res")
 
 }

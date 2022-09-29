@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":Number_Base_Converter-task-build-classes-java:test" external.linked.project.path="$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java" external.root.project.path="$MODULE_DIR$/../../../../../../.." external.system.id="GRADLE" external.system.module.group="Kotlin_NumberBaseConverter" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":Topics-BigDecimal-Theory:test" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="Kotlin_NumberBaseConverter" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="5" platform="JVM 1.8" allPlatforms="JVM [1.8]" useProjectSettings="false">
@@ -11,18 +11,18 @@
             <flagArg name="noStdlib" arg="true" />
           </flagArguments>
           <stringArguments>
-            <stringArg name="destination" arg="$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/build/classes/kotlin/test" />
+            <stringArg name="destination" arg="$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory/build/classes/kotlin/test" />
             <stringArg name="jvmTarget" arg="1.8" />
-            <stringArg name="moduleName" arg="Number_Base_Converter-task-build-classes-java" />
+            <stringArg name="moduleName" arg="Topics-BigDecimal-Theory" />
             <stringArg name="apiVersion" arg="1.6" />
             <stringArg name="languageVersion" arg="1.6" />
           </stringArguments>
           <arrayArguments>
             <arrayArg name="friendPaths">
               <args>
-                <arg>$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/build/classes/java/main</arg>
-                <arg>$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/build/classes/kotlin/main</arg>
-                <arg>$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/build/libs/Number_Base_Converter-task-build-classes-java.jar</arg>
+                <arg>$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory/build/classes/java/main</arg>
+                <arg>$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory/build/classes/kotlin/main</arg>
+                <arg>$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory/build/libs/Topics-BigDecimal-Theory.jar</arg>
               </args>
             </arrayArg>
             <arrayArg name="pluginClasspaths">
@@ -42,15 +42,13 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <output-test url="file://$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/out/test/classes" />
+    <output-test url="file://$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory/out/test/classes" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/src/test" />
-    <content url="file://$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/test">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../../../../Number Base Converter/task/build/classes/java/test" isTestSource="true" />
-    </content>
+    <content url="file://$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory/src/test" />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/BigDecimal/Theory/test" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Kotlin_NumberBaseConverter.Number_Base_Converter-task-build-classes-java.main" />
+    <orderEntry type="module" module-name="Kotlin_NumberBaseConverter.Topics-BigDecimal-Theory.main" />
     <orderEntry type="module" module-name="Kotlin_NumberBaseConverter.util.main" />
     <orderEntry type="module" module-name="Kotlin_NumberBaseConverter.util.test" production-on-test="" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10" level="project" />
@@ -60,5 +58,5 @@
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.10" level="project" />
     <orderEntry type="library" name="Gradle: com.github.hyperskill:hs-test:release-SNAPSHOT" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="Kotlin_NumberBaseConverter.Number_Base_Converter-task-build-classes-java.main" />
+  <component name="TestModuleProperties" production-module="Kotlin_NumberBaseConverter.Topics-BigDecimal-Theory.main" />
 </module>
