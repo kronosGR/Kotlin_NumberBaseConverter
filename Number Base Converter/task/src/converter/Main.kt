@@ -2,6 +2,7 @@ package converter
 
 import java.math.BigDecimal
 import java.math.BigInteger
+import java.math.RoundingMode
 import kotlin.math.pow
 
 fun toBinary(number: String): String {
@@ -87,8 +88,15 @@ fun fractionalFromDecimal(fractional: BigDecimal, base: Int): String {
         }
         precision++
     }
-    return result.joinToString("") { it.toString() }
+    val res = result.joinToString("") { it.toString() }
+    if (res == "") {
+        return "00000"
+    } else {
+        return res
+    }
 }
+
+fun BigDecimal.setPrecision(newPrecision: Int) = setScale(newPrecision, RoundingMode.HALF_UP)
 
 fun convert(src: Int, trg: Int, num: String) {
     var dec: String
@@ -97,26 +105,36 @@ fun convert(src: Int, trg: Int, num: String) {
         val (integer, fract) = num.split('.')
         val integ = when {
             src == 2 -> binToDec(num)
-            //src == 8 -> octalToDec(num.toInt())
             src in 3..36 -> fromAnyBaseToDec(src, integer)
             else -> "0"
         }
-
-
-        val decF = fractionalFromDecimal(fract.toBigDecimal(), src)
-        val newF = fractionalToDecimal(decF, trg)
-        res = "$integ.$newF"
-    } else {
-        dec = when {
-            src == 2 -> binToDec(num)
-            //src == 8 -> octalToDec(num.toInt())
-            src in 3..36 -> fromAnyBaseToDec(src, num)
+        res = when {
+            trg == 2 -> toBinary(integ)
+            trg in 3..36 -> toAnyBase(trg, integ)
             else -> "0"
         }
 
+        val decF = fractionalToDecimal(fract, src)
+        var newF = fractionalFromDecimal(decF, trg)
+        var tmp = "$res"
+
+        val len = newF.length
+        if (len < 6) {
+            for (i in 1 until 6 - len) {
+                newF += "0"
+            }
+        }
+        res = "$tmp.$newF"
+    } else {
         if (src == trg) {
-            res = dec.toString()
+            res = num.toString()
         } else {
+            dec = when {
+                src == 2 -> binToDec(num)
+                //src == 8 -> octalToDec(num.toInt())
+                src in 3..36 -> fromAnyBaseToDec(src, num)
+                else -> "0"
+            }
             res = when {
                 trg == 2 -> toBinary(dec)
                 //src == 8 -> toOctal(dec).toString()
